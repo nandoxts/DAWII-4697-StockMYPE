@@ -1,0 +1,94 @@
+<div class="modal d-block" tabindex="-1" (click)="cancelar()" (keydown.escape)="cancelar()">
+  <div class="modal-dialog modal-dialog-centered modal-lg" (click)="$event.stopPropagation()">
+    <form class="modal-content border-0 shadow-lg" [formGroup]="form" (ngSubmit)="guardar()" novalidate>
+
+      <div class="modal-header">
+        <h5 class="modal-title fw-bold d-flex align-items-center gap-2">
+          <i class="bi text-primary" [class]="esEdicion ? 'bi bi-pencil-square text-primary' : 'bi bi-plus-circle text-primary'"></i>
+          {{ esEdicion ? 'Editar producto' : 'Nuevo producto' }}
+        </h5>
+        <button type="button" class="btn-close" aria-label="Cerrar" (click)="cancelar()"></button>
+      </div>
+
+      <div class="modal-body">
+        @if (error()) {
+          <div class="alert alert-danger d-flex align-items-center gap-2 py-2">
+            <i class="bi bi-exclamation-octagon"></i><span>{{ error() }}</span>
+          </div>
+        }
+
+        <div class="row g-3">
+          <div class="col-md-6">
+            <label for="codigo" class="form-label">Código</label>
+            <div class="input-group has-validation">
+              <span class="input-group-text"><i class="bi bi-upc-scan"></i></span>
+              <input id="codigo" class="form-control text-uppercase" [class.is-invalid]="errorDe('codigo')"
+                     formControlName="codigo" placeholder="ABR-004">
+              <div class="invalid-feedback">{{ errorDe('codigo') }}</div>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <label for="categoria" class="form-label">Categoría</label>
+            <div class="input-group has-validation">
+              <span class="input-group-text"><i class="bi bi-tags"></i></span>
+              <input id="categoria" class="form-control" [class.is-invalid]="errorDe('categoria')"
+                     formControlName="categoria" list="lista-categorias" placeholder="Abarrotes">
+              <div class="invalid-feedback">{{ errorDe('categoria') }}</div>
+            </div>
+            <datalist id="lista-categorias">
+              @for (cat of categorias(); track cat) { <option [value]="cat"></option> }
+            </datalist>
+          </div>
+
+          <div class="col-12">
+            <label for="nombre" class="form-label">Nombre</label>
+            <input id="nombre" class="form-control" [class.is-invalid]="errorDe('nombre')"
+                   formControlName="nombre" placeholder="Fideos tallarín 500 g">
+            <div class="invalid-feedback">{{ errorDe('nombre') }}</div>
+          </div>
+
+          <div class="col-12">
+            <label for="descripcion" class="form-label">Descripción <span class="text-body-secondary fw-normal">(opcional)</span></label>
+            <textarea id="descripcion" rows="2" class="form-control" [class.is-invalid]="errorDe('descripcion')"
+                      formControlName="descripcion"></textarea>
+            <div class="invalid-feedback">{{ errorDe('descripcion') }}</div>
+          </div>
+
+          <div class="col-md-6">
+            <label for="precio" class="form-label">Precio</label>
+            <div class="input-group has-validation">
+              <span class="input-group-text">S/</span>
+              <input id="precio" type="number" step="0.01" min="0" class="form-control"
+                     [class.is-invalid]="errorDe('precio')" formControlName="precio">
+              <div class="invalid-feedback">{{ errorDe('precio') }}</div>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <label for="stock" class="form-label">Stock</label>
+            <div class="input-group has-validation">
+              <span class="input-group-text"><i class="bi bi-stack"></i></span>
+              <input id="stock" type="number" step="1" min="0" class="form-control"
+                     [class.is-invalid]="errorDe('stock')" formControlName="stock">
+              <span class="input-group-text">unid.</span>
+              <div class="invalid-feedback">{{ errorDe('stock') }}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-light border" (click)="cancelar()">Cancelar</button>
+        <button type="submit" class="btn btn-primary px-4" [disabled]="guardando()">
+          @if (guardando()) {
+            <span class="spinner-border spinner-border-sm me-2"></span>Guardando...
+          } @else {
+            <i class="bi bi-check2 me-1"></i>{{ esEdicion ? 'Guardar cambios' : 'Crear producto' }}
+          }
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+<div class="modal-backdrop fade show"></div>

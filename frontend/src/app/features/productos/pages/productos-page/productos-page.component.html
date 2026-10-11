@@ -1,0 +1,102 @@
+<!-- Encabezado -->
+<div class="d-flex flex-wrap justify-content-between align-items-end gap-3 mb-4">
+  <div>
+    <h1 class="h3 fw-bold mb-1">Inventario</h1>
+    <p class="text-body-secondary mb-0">Gestiona los productos de tu negocio</p>
+  </div>
+  <div class="d-flex gap-2">
+    <button class="btn btn-light border" (click)="cargar()" [disabled]="cargando()" title="Recargar">
+      <i class="bi bi-arrow-clockwise"></i>
+    </button>
+    <button class="btn btn-primary" (click)="nuevo()">
+      <i class="bi bi-plus-lg me-1"></i>Nuevo producto
+    </button>
+  </div>
+</div>
+
+<!-- KPIs -->
+<app-productos-resumen class="d-block mb-4" [productos]="productos()" />
+
+<!-- Listado -->
+<div class="card">
+  <div class="card-header bg-white p-3">
+    <div class="row g-2">
+      <div class="col-md-6">
+        <div class="input-group">
+          <span class="input-group-text bg-white"><i class="bi bi-search"></i></span>
+          <input type="search" class="form-control" placeholder="Buscar por nombre o código..."
+                 [value]="busqueda()" (input)="onBuscar($event)">
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <select class="form-select" [value]="categoria()" (change)="onCategoria($event)">
+          <option value="">Todas las categorías</option>
+          @for (cat of categorias(); track cat) {
+            <option [value]="cat">{{ cat }}</option>
+          }
+        </select>
+      </div>
+      <div class="col-6 col-md-3">
+        <select class="form-select" [value]="estado()" (change)="onEstado($event)">
+          <option value="">Todo el stock</option>
+          <option value="ok">Stock normal</option>
+          <option value="bajo">Stock bajo</option>
+          <option value="agotado">Agotado</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  @if (cargando()) {
+    <div class="text-center py-5 text-body-secondary">
+      <div class="spinner-border text-primary mb-2"></div>
+      <div>Cargando productos...</div>
+    </div>
+  } @else if (errorCarga()) {
+    <app-empty-state icono="bi-wifi-off" [mensaje]="errorCarga()!">
+      <button class="btn btn-light border" (click)="cargar()"><i class="bi bi-arrow-clockwise me-1"></i>Reintentar</button>
+    </app-empty-state>
+  } @else if (filtrados().length === 0) {
+    @if (hayFiltros()) {
+      <app-empty-state icono="bi-search" mensaje="No hay resultados para tu búsqueda.">
+        <button class="btn btn-light border" (click)="limpiarFiltros()"><i class="bi bi-x-circle me-1"></i>Limpiar filtros</button>
+      </app-empty-state>
+    } @else {
+      <app-empty-state icono="bi-box-seam" mensaje="Aún no hay productos registrados.">
+        <button class="btn btn-primary" (click)="nuevo()"><i class="bi bi-plus-lg me-1"></i>Registrar el primero</button>
+      </app-empty-state>
+    }
+  } @else {
+    <app-productos-tabla [productos]="visibles()" [orden]="orden()"
+                         (editar)="editar($event)" (eliminar)="eliminar($event)" (ordenar)="ordenar($event)" />
+
+    <div class="card-footer bg-white d-flex flex-wrap justify-content-between align-items-center gap-2 py-3">
+      <small class="text-body-secondary">
+        Mostrando {{ rango().desde }}–{{ rango().hasta }} de {{ rango().total }} productos
+      </small>
+      @if (totalPaginas() > 1) {
+        <nav aria-label="Paginación">
+          <ul class="pagination pagination-sm mb-0">
+            <li class="page-item" [class.disabled]="pagina() === 1">
+              <button class="page-link" (click)="pagina.set(pagina() - 1)"><i class="bi bi-chevron-left"></i></button>
+            </li>
+            @for (n of paginas(); track n) {
+              <li class="page-item" [class.active]="n === pagina()">
+                <button class="page-link" (click)="pagina.set(n)">{{ n }}</button>
+              </li>
+            }
+            <li class="page-item" [class.disabled]="pagina() === totalPaginas()">
+              <button class="page-link" (click)="pagina.set(pagina() + 1)"><i class="bi bi-chevron-right"></i></button>
+            </li>
+          </ul>
+        </nav>
+      }
+    </div>
+  }
+</div>
+
+<!-- Modal crear / editar -->
+@if (enFormulario() !== undefined) {
+  <app-producto-form [producto]="enFormulario() ?? null" [categorias]="categorias()"
+                     (guardado)="onGuardado($event)" (cerrar)="enFormulario.set(undefined)" />
+}

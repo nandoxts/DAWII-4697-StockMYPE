@@ -1,0 +1,6 @@
+.modal { animation: aparecer .15s ease; }
+.modal-dialog { animation: subir .2s ease; }
+.form-label { font-weight: 600; font-size: 13px; }
+
+@keyframes aparecer { from { opacity: 0; } }
+@keyframes subir { from { opacity: 0; transform: translateY(16px); } }

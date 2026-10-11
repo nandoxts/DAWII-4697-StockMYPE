@@ -1,0 +1,9 @@
+th {
+  font-size: 12px; text-transform: uppercase; letter-spacing: .04em;
+  color: var(--bs-secondary-color); font-weight: 600; white-space: nowrap;
+}
+.ordenable { cursor: pointer; user-select: none; }
+.ordenable:hover { color: var(--bs-primary); }
+td:first-child, th:first-child { padding-left: 1rem; }
+td:last-child, th:last-child { padding-right: 1rem; }
+.desc { max-width: 320px; }
