@@ -3,10 +3,13 @@ package pe.edu.cibertec.stockmype.exception;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
+import org.springframework.web.HttpMediaTypeNotSupportedException;
+import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
+import org.springframework.web.servlet.resource.NoResourceFoundException;
 import pe.edu.cibertec.stockmype.dto.ErrorResponse;
 
 import java.util.LinkedHashMap;
@@ -52,6 +55,24 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(RecursoDuplicadoException.class)
     public ResponseEntity<ErrorResponse> handleDuplicado(RecursoDuplicadoException ex) {
         return build(HttpStatus.CONFLICT, ex.getMessage(), null);
+    }
+
+    // 404 - Ruta inexistente
+    @ExceptionHandler(NoResourceFoundException.class)
+    public ResponseEntity<ErrorResponse> handleRutaInexistente(NoResourceFoundException ex) {
+        return build(HttpStatus.NOT_FOUND, "La ruta solicitada no existe", null);
+    }
+
+    // 405 - Método HTTP no permitido (ej: GET a /api/auth/login)
+    @ExceptionHandler(HttpRequestMethodNotSupportedException.class)
+    public ResponseEntity<ErrorResponse> handleMetodo(HttpRequestMethodNotSupportedException ex) {
+        return build(HttpStatus.METHOD_NOT_ALLOWED, "Método " + ex.getMethod() + " no permitido en esta ruta", null);
+    }
+
+    // 415 - Content-Type no soportado (la API solo acepta JSON)
+    @ExceptionHandler(HttpMediaTypeNotSupportedException.class)
+    public ResponseEntity<ErrorResponse> handleTipoContenido(HttpMediaTypeNotSupportedException ex) {
+        return build(HttpStatus.UNSUPPORTED_MEDIA_TYPE, "El contenido debe enviarse en formato JSON", null);
     }
 
     // 500 - Cualquier otro error

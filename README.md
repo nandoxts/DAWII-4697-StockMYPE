@@ -28,7 +28,7 @@ cd backend
 mvn spring-boot:run
 ```
 
-La BD `stockmype_db` se crea sola. El seeder crea el usuario **admin / admin123** (password cifrado con BCrypt) y 5 productos.
+La BD `stockmype_db` se crea sola. El seeder crea el usuario **admin / admin123** (password cifrado con BCrypt) y un catálogo de 50 productos de bodega.
 
 **2. Tests de la capa de datos** (`@DataJpaTest`: insertar, actualizar, eliminar, listar):
 
@@ -72,7 +72,7 @@ La URL del backend está en `src/environments/environment.ts`.
 | Método | Ruta | Respuestas |
 |---|---|---|
 | POST | `/api/auth/login` | 200, 400, 401 |
-| GET | `/api/productos` | 200 |
+| GET | `/api/productos` | 200, 401 |
 | GET | `/api/productos/{id}` | 200, 404 |
 | POST | `/api/productos` | 201, 400, 409 |
 | PUT | `/api/productos/{id}` | 200, 400, 404, 409 |
