@@ -1,0 +1,15 @@
+{
+  "folders": [
+    { "name": "Raiz", "path": "." },
+    { "name": "backend (Spring Boot)", "path": "backend" },
+    { "name": "frontend (Angular)", "path": "frontend" }
+  ],
+  "settings": {
+    "java.configuration.updateBuildConfiguration": "automatic",
+    "files.exclude": {
+      "**/node_modules": true,
+      "**/target": true,
+      "**/.angular": true
+    }
+  }
+}
