@@ -1,9 +1,21 @@
 th {
-  font-size: 12px; text-transform: uppercase; letter-spacing: .04em;
-  color: var(--bs-secondary-color); font-weight: 600; white-space: nowrap;
+  font-size: .78rem; color: var(--bs-secondary-color); font-weight: 500; white-space: nowrap;
+  background: #f9fafb; border-bottom-color: #e3e6ea;
 }
 .ordenable { cursor: pointer; user-select: none; }
-.ordenable:hover { color: var(--bs-primary); }
+.ordenable:hover { color: #1f2328; }
+td { border-color: #eef0f2; }
 td:first-child, th:first-child { padding-left: 1rem; }
 td:last-child, th:last-child { padding-right: 1rem; }
+
+.codigo { font-family: ui-monospace, 'Cascadia Mono', Consolas, monospace; font-size: .82rem; color: var(--bs-secondary-color); }
 .desc { max-width: 320px; }
+
+/* Acciones discretas: se notan al pasar sobre la fila */
+.accion { color: #6b7480; border: none; padding: .25rem .45rem; }
+.accion:hover { color: #1f2328; background: #eef0f2; }
+.accion-peligro:hover { color: #b42318; background: #fdecea; }
+@media (hover: hover) {
+  .acciones .accion { opacity: .55; transition: opacity .15s; }
+  tr:hover .acciones .accion, .accion:focus-visible { opacity: 1; }
+}

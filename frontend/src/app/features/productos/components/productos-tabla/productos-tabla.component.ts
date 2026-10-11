@@ -1,5 +1,6 @@
 import { Component, input, output } from '@angular/core';
 import { CurrencyPipe } from '@angular/common';
+import { animate, query, stagger, style, transition, trigger } from '@angular/animations';
 
 import { Producto } from '../../../../core/models/producto.model';
 import { StockBadgeComponent } from '../../../../shared/components/stock-badge/stock-badge.component';
@@ -13,12 +14,25 @@ export interface Orden { campo: CampoOrden; asc: boolean; }
   standalone: true,
   imports: [CurrencyPipe, StockBadgeComponent],
   templateUrl: './productos-tabla.component.html',
-  styleUrl: './productos-tabla.component.css'
+  styleUrl: './productos-tabla.component.css',
+  animations: [
+    // Filas nuevas aparecen en cascada; las eliminadas se desvanecen
+    trigger('filas', [
+      transition('* => *', [
+        query(':enter', [
+          style({ opacity: 0, transform: 'translateY(4px)' }),
+          stagger(25, animate('180ms ease-out', style({ opacity: 1, transform: 'none' })))
+        ], { optional: true }),
+        query(':leave', [animate('150ms ease-in', style({ opacity: 0 }))], { optional: true })
+      ])
+    ])
+  ]
 })
 export class ProductosTablaComponent {
 
   readonly productos = input.required<Producto[]>();
   readonly orden = input.required<Orden>();
+  readonly cargando = input(false);
 
   readonly editar = output<Producto>();
   readonly eliminar = output<Producto>();
@@ -31,6 +45,8 @@ export class ProductosTablaComponent {
     { campo: 'precio', titulo: 'Precio', derecha: true },
     { campo: 'stock', titulo: 'Stock', derecha: true }
   ];
+
+  readonly filasEsqueleto = [1, 2, 3, 4, 5];
 
   iconoOrden(campo: CampoOrden): string {
     const o = this.orden();

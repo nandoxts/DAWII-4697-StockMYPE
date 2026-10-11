@@ -1,78 +1,104 @@
 /*
  * Tema global de StockMYPE sobre Bootstrap 5.
  * Bootstrap y Bootstrap Icons se cargan desde angular.json (styles).
+ * Fuente del sistema (sin descargas): evita el salto de texto al cargar.
  */
 
 :root {
-  --gradiente-marca: linear-gradient(140deg, #312e81 0%, #4f46e5 55%, #7c3aed 100%);
+  --marca: #18794e;
+  --marca-hover: #136240;
+  --marca-suave: #e8f3ee;
+  --fondo-app: #f5f6f8;
 
-  /* Color de marca (índigo) en lugar del azul de Bootstrap */
-  --bs-primary: #4f46e5;
-  --bs-primary-rgb: 79, 70, 229;
-  --bs-primary-text-emphasis: #3730a3;
-  --bs-primary-bg-subtle: #eef2ff;
-  --bs-primary-border-subtle: #c7d2fe;
-  --bs-link-color: #4f46e5;
-  --bs-link-color-rgb: 79, 70, 229;
-  --bs-link-hover-color: #4338ca;
-  --bs-link-hover-color-rgb: 67, 56, 202;
-  --bs-focus-ring-color: rgba(79, 70, 229, .25);
+  --bs-primary: #18794e;
+  --bs-primary-rgb: 24, 121, 78;
+  --bs-primary-text-emphasis: #0f5236;
+  --bs-primary-bg-subtle: #e8f3ee;
+  --bs-primary-border-subtle: #b7dcc9;
+  --bs-link-color: #18794e;
+  --bs-link-color-rgb: 24, 121, 78;
+  --bs-link-hover-color: #136240;
+  --bs-link-hover-color-rgb: 19, 98, 64;
+  --bs-focus-ring-color: rgba(24, 121, 78, .2);
 
-  --bs-body-font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
-  --bs-body-font-size: .925rem;
-  --bs-body-color: #1e1b4b;
-  --fondo-app: #f5f6fa;
-  --bs-border-radius: .625rem;
-  --bs-border-radius-lg: .875rem;
+  --bs-body-font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --bs-body-font-size: .9375rem;
+  --bs-body-color: #1f2328;
+  --bs-secondary-color: #59636e;
+  --bs-border-color: #dfe3e8;
+  --bs-border-radius: .5rem;
+  --bs-border-radius-lg: .625rem;
 }
 
 body { background: var(--fondo-app); -webkit-font-smoothing: antialiased; }
 
-/* ===== Botones con el color de marca ===== */
+/* ===== Botones ===== */
+.btn { font-weight: 500; }
 .btn-primary {
-  --bs-btn-bg: #4f46e5;
-  --bs-btn-border-color: #4f46e5;
-  --bs-btn-hover-bg: #4338ca;
-  --bs-btn-hover-border-color: #4338ca;
-  --bs-btn-active-bg: #3730a3;
-  --bs-btn-active-border-color: #3730a3;
-  --bs-btn-disabled-bg: #4f46e5;
-  --bs-btn-disabled-border-color: #4f46e5;
-  --bs-btn-focus-shadow-rgb: 79, 70, 229;
+  --bs-btn-bg: #18794e;
+  --bs-btn-border-color: #18794e;
+  --bs-btn-hover-bg: #136240;
+  --bs-btn-hover-border-color: #136240;
+  --bs-btn-active-bg: #0f5236;
+  --bs-btn-active-border-color: #0f5236;
+  --bs-btn-disabled-bg: #18794e;
+  --bs-btn-disabled-border-color: #18794e;
+  --bs-btn-focus-shadow-rgb: 24, 121, 78;
 }
-.btn-outline-primary {
-  --bs-btn-color: #4f46e5;
-  --bs-btn-border-color: #c7d2fe;
-  --bs-btn-hover-bg: #4f46e5;
-  --bs-btn-hover-border-color: #4f46e5;
-  --bs-btn-active-bg: #4338ca;
-  --bs-btn-active-border-color: #4338ca;
+.btn-outline-secondary {
+  --bs-btn-color: #424a53;
+  --bs-btn-border-color: #d0d7de;
+  --bs-btn-hover-color: #1f2328;
+  --bs-btn-hover-bg: #f3f4f6;
+  --bs-btn-hover-border-color: #c4cbd3;
+  --bs-btn-active-color: #1f2328;
+  --bs-btn-active-bg: #eaecef;
+  --bs-btn-active-border-color: #c4cbd3;
 }
-.btn-outline-danger { --bs-btn-border-color: #fecaca; }
 
 .pagination {
-  --bs-pagination-color: #4f46e5;
-  --bs-pagination-active-bg: #4f46e5;
-  --bs-pagination-active-border-color: #4f46e5;
-  --bs-pagination-focus-box-shadow: 0 0 0 .25rem rgba(79, 70, 229, .25);
+  --bs-pagination-color: #424a53;
+  --bs-pagination-active-bg: #18794e;
+  --bs-pagination-active-border-color: #18794e;
+  --bs-pagination-focus-box-shadow: 0 0 0 .2rem rgba(24, 121, 78, .2);
 }
 
 /* ===== Formularios ===== */
 .form-control:focus, .form-select:focus {
-  border-color: #a5b4fc;
-  box-shadow: 0 0 0 .25rem rgba(79, 70, 229, .15);
+  border-color: #86c2a5;
+  box-shadow: 0 0 0 .2rem rgba(24, 121, 78, .15);
 }
-.input-group-text { color: var(--bs-secondary-color); }
+.form-label { font-weight: 500; font-size: .875rem; margin-bottom: .35rem; }
+.input-group-text { color: var(--bs-secondary-color); background: #f6f8fa; }
 
-/* ===== Tarjetas ===== */
+/* ===== Tarjetas: borde fino, sin sombras llamativas ===== */
 .card {
-  --bs-card-border-color: transparent;
-  --bs-card-border-radius: .875rem;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, .05), 0 8px 24px rgba(30, 27, 75, .06);
+  --bs-card-border-color: #e3e6ea;
+  --bs-card-border-radius: .625rem;
+  box-shadow: 0 1px 2px rgba(16, 24, 40, .04);
   overflow: hidden;
 }
-.card-header, .card-footer { border-color: var(--bs-border-color-translucent); }
+.card-header, .card-footer { border-color: #eceef1; }
+
+/* ===== Esqueletos de carga ===== */
+.esqueleto {
+  display: block; height: .85rem; border-radius: 4px;
+  background: linear-gradient(90deg, #eceef1 25%, #f5f6f8 37%, #eceef1 63%);
+  background-size: 400% 100%;
+  animation: esqueleto 1.3s ease infinite;
+}
+@keyframes esqueleto { from { background-position: 100% 50%; } to { background-position: 0 50%; } }
+
+/* ===== Transición entre páginas (View Transitions API) ===== */
+::view-transition-old(root),
+::view-transition-new(root) { animation-duration: .2s; animation-timing-function: ease; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, ::view-transition-old(root), ::view-transition-new(root) {
+    animation-duration: .01ms !important; transition-duration: .01ms !important;
+  }
+}
 
 /* ===== SweetAlert2 con la tipografía de la app ===== */
-.swal2-popup { font-family: var(--bs-body-font-family); border-radius: 1rem; }
-.swal2-title { font-size: 1.35rem; }
+.swal2-popup { font-family: var(--bs-body-font-family); border-radius: .75rem; }
+.swal2-title { font-size: 1.25rem; }

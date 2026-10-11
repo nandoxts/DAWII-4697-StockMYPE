@@ -13,17 +13,17 @@ import { StatCardComponent } from '../../../../shared/components/stat-card/stat-
   template: `
     <div class="row g-3">
       <div class="col-6 col-lg-3">
-        <app-stat-card icono="bi-box-seam" etiqueta="Productos" [valor]="resumen().total" />
+        <app-stat-card icono="bi-box-seam" etiqueta="Productos" [valor]="resumen().total" [cargando]="cargando()" />
       </div>
       <div class="col-6 col-lg-3">
-        <app-stat-card icono="bi-stack" etiqueta="Unidades en stock" variante="info" [valor]="resumen().unidades" />
+        <app-stat-card icono="bi-stack" etiqueta="Unidades en stock" [valor]="resumen().unidades" [cargando]="cargando()" />
       </div>
       <div class="col-6 col-lg-3">
-        <app-stat-card icono="bi-cash-coin" etiqueta="Valor del inventario" variante="success" [valor]="resumen().valor" />
+        <app-stat-card icono="bi-cash-coin" etiqueta="Valor del inventario" [valor]="resumen().valor" [cargando]="cargando()" />
       </div>
       <div class="col-6 col-lg-3">
         <app-stat-card icono="bi-exclamation-triangle" [etiqueta]="'Stock bajo (≤ ' + stockMinimo + ')'"
-                       [variante]="resumen().bajos > 0 ? 'warning' : 'success'" [valor]="resumen().bajos" />
+                       [variante]="resumen().bajos > 0 ? 'alerta' : 'normal'" [valor]="resumen().bajos" [cargando]="cargando()" />
       </div>
     </div>
   `
@@ -31,6 +31,7 @@ import { StatCardComponent } from '../../../../shared/components/stat-card/stat-
 export class ProductosResumenComponent {
 
   readonly productos = input.required<Producto[]>();
+  readonly cargando = input(false);
   readonly stockMinimo = STOCK_MINIMO;
 
   private readonly moneda = inject(CurrencyPipe);

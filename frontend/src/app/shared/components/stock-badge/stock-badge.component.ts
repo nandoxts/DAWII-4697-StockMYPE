@@ -2,24 +2,29 @@ import { Component, computed, input } from '@angular/core';
 
 import { STOCK_MINIMO } from '../../../core/models/producto.model';
 
-// Badge de stock: verde (ok), ámbar (bajo) o rojo (agotado)
+// Stock: número normal; resaltado solo cuando está bajo o agotado
 @Component({
   selector: 'app-stock-badge',
   standalone: true,
   template: `
-    <span class="badge rounded-pill" [class]="'badge rounded-pill ' + estilo().clase">
-      <i class="bi me-1" [class]="'bi me-1 ' + estilo().icono"></i>{{ stock() }}
-      @if (estilo().texto) { <span class="ms-1">· {{ estilo().texto }}</span> }
-    </span>
-  `
+    @switch (estado()) {
+      @case ('agotado') { <span class="etiqueta agotado">Agotado</span> }
+      @case ('bajo') { <span class="etiqueta bajo">{{ stock() }} · bajo</span> }
+      @default { <span>{{ stock() }}</span> }
+    }
+  `,
+  styles: [`
+    .etiqueta { display: inline-block; padding: .15rem .5rem; border-radius: 4px; font-size: .8rem; font-weight: 500; white-space: nowrap; }
+    .bajo { background: #fef3c7; color: #92400e; }
+    .agotado { background: #fde8e7; color: #b42318; }
+  `]
 })
 export class StockBadgeComponent {
   readonly stock = input.required<number>();
 
-  readonly estilo = computed(() => {
+  readonly estado = computed(() => {
     const s = this.stock();
-    if (s === 0) return { clase: 'text-bg-danger', icono: 'bi-x-circle', texto: 'Agotado' };
-    if (s <= STOCK_MINIMO) return { clase: 'bg-warning-subtle text-warning-emphasis', icono: 'bi-exclamation-triangle', texto: 'Bajo' };
-    return { clase: 'bg-success-subtle text-success-emphasis', icono: 'bi-check-circle', texto: '' };
+    if (s === 0) return 'agotado';
+    return s <= STOCK_MINIMO ? 'bajo' : 'ok';
   });
 }

@@ -20,7 +20,8 @@ const CATEGORIAS_BASE = ['Abarrotes', 'Lácteos', 'Bebidas', 'Limpieza', 'Snacks
   selector: 'app-productos-page',
   standalone: true,
   imports: [EmptyStateComponent, ProductosResumenComponent, ProductosTablaComponent, ProductoFormComponent],
-  templateUrl: './productos-page.component.html'
+  templateUrl: './productos-page.component.html',
+  styleUrl: './productos-page.component.css'
 })
 export class ProductosPageComponent implements OnInit {
 
@@ -30,6 +31,8 @@ export class ProductosPageComponent implements OnInit {
   // ===== Estado =====
   readonly productos = signal<Producto[]>([]);
   readonly cargando = signal(true);
+  /** Solo la primera carga muestra esqueletos; las recargas mantienen la tabla visible */
+  readonly primeraCarga = signal(true);
   readonly errorCarga = signal<string | null>(null);
 
   readonly busqueda = signal('');
@@ -89,6 +92,7 @@ export class ProductosPageComponent implements OnInit {
   }
 
   // GET /api/productos
+  // Las recargas (tras crear/editar/eliminar) no vacían la tabla: se actualiza en el sitio, sin parpadeo
   cargar(): void {
     this.cargando.set(true);
     this.errorCarga.set(null);
@@ -96,10 +100,14 @@ export class ProductosPageComponent implements OnInit {
       next: data => {
         this.productos.set(data);
         this.cargando.set(false);
+        this.primeraCarga.set(false);
       },
       error: (err: HttpErrorResponse) => {
+        const mensaje = mensajeDeError(err, 'No se pudieron cargar los productos.');
         this.cargando.set(false);
-        this.errorCarga.set(mensajeDeError(err, 'No se pudieron cargar los productos.'));
+        this.primeraCarga.set(false);
+        this.errorCarga.set(mensaje);
+        if (this.productos().length > 0) this.notificacion.error(mensaje);
       }
     });
   }

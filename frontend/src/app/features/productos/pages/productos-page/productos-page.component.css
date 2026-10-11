@@ -1,0 +1,9 @@
+.buscador { position: relative; }
+.buscador .bi {
+  position: absolute; left: 12px; top: 50%; transform: translateY(-50%);
+  color: var(--bs-secondary-color); pointer-events: none;
+}
+.buscador .form-control { padding-left: 2.2rem; }
+
+.girando { display: inline-block; animation: girar .8s linear infinite; }
+@keyframes girar { to { transform: rotate(360deg); } }
