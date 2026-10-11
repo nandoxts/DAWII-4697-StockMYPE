@@ -1,0 +1,43 @@
+### Login OK (200)
+POST http://localhost:8080/api/auth/login
+Content-Type: application/json
+
+{ "username": "admin", "password": "admin123" }
+
+### Login datos invalidos (400)
+POST http://localhost:8080/api/auth/login
+Content-Type: application/json
+
+{ "username": "", "password": "" }
+
+### Login credenciales incorrectas (401)
+POST http://localhost:8080/api/auth/login
+Content-Type: application/json
+
+{ "username": "admin", "password": "otra" }
+
+### Listar productos (200) - requiere Basic Auth
+GET http://localhost:8080/api/productos
+Authorization: Basic admin admin123
+
+### Buscar por id (200 / 404)
+GET http://localhost:8080/api/productos/1
+Authorization: Basic admin admin123
+
+### Crear (201)
+POST http://localhost:8080/api/productos
+Authorization: Basic admin admin123
+Content-Type: application/json
+
+{ "codigo": "ABR-010", "nombre": "Fideos tallarin 500 g", "descripcion": "Paquete", "categoria": "Abarrotes", "precio": 3.80, "stock": 20 }
+
+### Actualizar (200)
+PUT http://localhost:8080/api/productos/1
+Authorization: Basic admin admin123
+Content-Type: application/json
+
+{ "codigo": "ABR-001", "nombre": "Arroz extra 5 kg", "descripcion": "Bolsa", "categoria": "Abarrotes", "precio": 25.50, "stock": 28 }
+
+### Eliminar (204)
+DELETE http://localhost:8080/api/productos/1
+Authorization: Basic admin admin123
