@@ -1,0 +1,74 @@
+<div class="container-fluid p-0">
+  <div class="row g-0 min-vh-100">
+
+    <!-- Panel de marca -->
+    <section class="col-lg-6 d-none d-lg-flex flex-column justify-content-between panel-marca text-white p-5">
+      <div class="d-flex align-items-center gap-2 fs-5 fw-bold">
+        <span class="logo"><i class="bi bi-box-seam"></i></span> StockMYPE
+      </div>
+
+      <div>
+        <h1 class="display-6 fw-bold mb-3">Tu bodega, siempre con el stock bajo control.</h1>
+        <p class="opacity-75 mb-4">Registra, actualiza y controla el inventario de tu negocio desde cualquier lugar.</p>
+        <ul class="list-unstyled d-grid gap-2 opacity-90">
+          <li><i class="bi bi-check2-circle me-2"></i>Inventario en tiempo real</li>
+          <li><i class="bi bi-check2-circle me-2"></i>Alertas de stock bajo y agotado</li>
+          <li><i class="bi bi-check2-circle me-2"></i>Acceso seguro con contraseña cifrada (BCrypt)</li>
+        </ul>
+      </div>
+
+      <small class="opacity-75">DAW II (4697) · Cibertec</small>
+    </section>
+
+    <!-- Formulario -->
+    <section class="col-lg-6 d-flex align-items-center justify-content-center p-4">
+      <form class="w-100 tarjeta-login" [formGroup]="form" (ngSubmit)="ingresar()" novalidate>
+        <div class="d-lg-none d-flex align-items-center gap-2 fs-5 fw-bold mb-4">
+          <span class="logo"><i class="bi bi-box-seam"></i></span> StockMYPE
+        </div>
+
+        <h2 class="fw-bold mb-1">Iniciar sesión</h2>
+        <p class="text-body-secondary mb-4">Ingresa tus credenciales para continuar</p>
+
+        @if (error()) {
+          <div class="alert alert-danger d-flex align-items-center gap-2 py-2" role="alert">
+            <i class="bi bi-exclamation-octagon"></i><span>{{ error() }}</span>
+          </div>
+        }
+
+        <div class="mb-3">
+          <label for="username" class="form-label fw-semibold small">Usuario</label>
+          <div class="input-group has-validation">
+            <span class="input-group-text"><i class="bi bi-person"></i></span>
+            <input id="username" type="text" class="form-control" [class.is-invalid]="invalido('username')"
+                   formControlName="username" placeholder="admin" autocomplete="username">
+            <div class="invalid-feedback">El usuario es obligatorio</div>
+          </div>
+        </div>
+
+        <div class="mb-4">
+          <label for="password" class="form-label fw-semibold small">Contraseña</label>
+          <div class="input-group has-validation">
+            <span class="input-group-text"><i class="bi bi-lock"></i></span>
+            <input id="password" class="form-control" [class.is-invalid]="invalido('password')"
+                   [type]="verPassword() ? 'text' : 'password'" formControlName="password"
+                   placeholder="••••••••" autocomplete="current-password">
+            <button type="button" class="btn btn-outline-secondary" (click)="verPassword.set(!verPassword())"
+                    [title]="verPassword() ? 'Ocultar' : 'Ver'">
+              <i class="bi" [class]="verPassword() ? 'bi bi-eye-slash' : 'bi bi-eye'"></i>
+            </button>
+            <div class="invalid-feedback">La contraseña es obligatoria</div>
+          </div>
+        </div>
+
+        <button class="btn btn-primary w-100 py-2 fw-semibold" type="submit" [disabled]="cargando()">
+          @if (cargando()) {
+            <span class="spinner-border spinner-border-sm me-2"></span>Ingresando...
+          } @else {
+            <i class="bi bi-box-arrow-in-right me-2"></i>Ingresar
+          }
+        </button>
+      </form>
+    </section>
+  </div>
+</div>

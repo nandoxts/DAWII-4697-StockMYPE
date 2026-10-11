@@ -1,0 +1,38 @@
+<nav class="navbar navbar-expand bg-white border-bottom sticky-top">
+  <div class="container-xl">
+    <a class="navbar-brand d-flex align-items-center gap-2 fw-bold" routerLink="/productos">
+      <span class="logo"><i class="bi bi-box-seam"></i></span>
+      StockMYPE
+    </a>
+
+    <ul class="navbar-nav me-auto ms-3 d-none d-md-flex">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/productos" routerLinkActive="active">
+          <i class="bi bi-boxes me-1"></i>Inventario
+        </a>
+      </li>
+    </ul>
+
+    <div class="d-flex align-items-center gap-3 ms-auto">
+      <div class="avatar">{{ inicial() }}</div>
+      <div class="d-none d-sm-flex flex-column lh-sm">
+        <strong class="small">{{ sesion()?.nombre }}</strong>
+        <span class="text-body-secondary" style="font-size: 12px">{{ sesion()?.rol }}</span>
+      </div>
+      <button class="btn btn-light border btn-sm" (click)="cerrarSesion()" title="Cerrar sesión">
+        <i class="bi bi-box-arrow-right"></i><span class="d-none d-sm-inline ms-1">Salir</span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<main class="container-xl py-4 flex-grow-1">
+  <router-outlet />
+</main>
+
+<footer class="border-top bg-white py-3 small text-body-secondary">
+  <div class="container-xl d-flex justify-content-between flex-wrap gap-2">
+    <span>© {{ anio }} StockMYPE · Gestión de inventario para MYPEs</span>
+    <span>DAW II (4697) · Cibertec</span>
+  </div>
+</footer>
