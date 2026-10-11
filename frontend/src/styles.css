@@ -1,0 +1,78 @@
+/*
+ * Tema global de StockMYPE sobre Bootstrap 5.
+ * Bootstrap y Bootstrap Icons se cargan desde angular.json (styles).
+ */
+
+:root {
+  --gradiente-marca: linear-gradient(140deg, #312e81 0%, #4f46e5 55%, #7c3aed 100%);
+
+  /* Color de marca (índigo) en lugar del azul de Bootstrap */
+  --bs-primary: #4f46e5;
+  --bs-primary-rgb: 79, 70, 229;
+  --bs-primary-text-emphasis: #3730a3;
+  --bs-primary-bg-subtle: #eef2ff;
+  --bs-primary-border-subtle: #c7d2fe;
+  --bs-link-color: #4f46e5;
+  --bs-link-color-rgb: 79, 70, 229;
+  --bs-link-hover-color: #4338ca;
+  --bs-link-hover-color-rgb: 67, 56, 202;
+  --bs-focus-ring-color: rgba(79, 70, 229, .25);
+
+  --bs-body-font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+  --bs-body-font-size: .925rem;
+  --bs-body-color: #1e1b4b;
+  --fondo-app: #f5f6fa;
+  --bs-border-radius: .625rem;
+  --bs-border-radius-lg: .875rem;
+}
+
+body { background: var(--fondo-app); -webkit-font-smoothing: antialiased; }
+
+/* ===== Botones con el color de marca ===== */
+.btn-primary {
+  --bs-btn-bg: #4f46e5;
+  --bs-btn-border-color: #4f46e5;
+  --bs-btn-hover-bg: #4338ca;
+  --bs-btn-hover-border-color: #4338ca;
+  --bs-btn-active-bg: #3730a3;
+  --bs-btn-active-border-color: #3730a3;
+  --bs-btn-disabled-bg: #4f46e5;
+  --bs-btn-disabled-border-color: #4f46e5;
+  --bs-btn-focus-shadow-rgb: 79, 70, 229;
+}
+.btn-outline-primary {
+  --bs-btn-color: #4f46e5;
+  --bs-btn-border-color: #c7d2fe;
+  --bs-btn-hover-bg: #4f46e5;
+  --bs-btn-hover-border-color: #4f46e5;
+  --bs-btn-active-bg: #4338ca;
+  --bs-btn-active-border-color: #4338ca;
+}
+.btn-outline-danger { --bs-btn-border-color: #fecaca; }
+
+.pagination {
+  --bs-pagination-color: #4f46e5;
+  --bs-pagination-active-bg: #4f46e5;
+  --bs-pagination-active-border-color: #4f46e5;
+  --bs-pagination-focus-box-shadow: 0 0 0 .25rem rgba(79, 70, 229, .25);
+}
+
+/* ===== Formularios ===== */
+.form-control:focus, .form-select:focus {
+  border-color: #a5b4fc;
+  box-shadow: 0 0 0 .25rem rgba(79, 70, 229, .15);
+}
+.input-group-text { color: var(--bs-secondary-color); }
+
+/* ===== Tarjetas ===== */
+.card {
+  --bs-card-border-color: transparent;
+  --bs-card-border-radius: .875rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, .05), 0 8px 24px rgba(30, 27, 75, .06);
+  overflow: hidden;
+}
+.card-header, .card-footer { border-color: var(--bs-border-color-translucent); }
+
+/* ===== SweetAlert2 con la tipografía de la app ===== */
+.swal2-popup { font-family: var(--bs-body-font-family); border-radius: 1rem; }
+.swal2-title { font-size: 1.35rem; }
