@@ -1,0 +1,17 @@
+# MySQL 8 para desarrollo local (alternativa a instalar MySQL Server).
+# Uso: docker compose up -d   -> queda en localhost:3306 con root/root
+services:
+  mysql:
+    image: mysql/mysql-server:8.0
+    container_name: stockmype-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_ROOT_HOST: "%"
+      MYSQL_DATABASE: stockmype_db
+    ports:
+      - "3306:3306"
+    volumes:
+      - stockmype-data:/var/lib/mysql
+
+volumes:
+  stockmype-data:
