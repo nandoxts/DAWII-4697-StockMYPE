@@ -1,13 +1,18 @@
-<nav class="navbar navbar-expand bg-white border-bottom sticky-top">
+<!-- Franja de color detrás de la barra y el encabezado de cada página -->
+<div class="franja" aria-hidden="true"></div>
+
+<nav class="navbar navbar-expand">
   <div class="container-xl">
-    <a class="navbar-brand d-flex align-items-center gap-2 fw-semibold" routerLink="/productos">
-      <img src="logo.svg" alt="" width="32" height="32">
-      <span>Stock<span class="text-primary">MYPE</span></span>
+    <a class="navbar-brand marca" routerLink="/productos">
+      <img src="logo.svg" alt="" width="34" height="34">
+      <span>StockMYPE</span>
     </a>
 
-    <ul class="navbar-nav me-auto ms-2 d-none d-md-flex">
+    <ul class="navbar-nav me-auto ms-3 d-none d-md-flex">
       <li class="nav-item">
-        <a class="nav-link" routerLink="/productos" routerLinkActive="active">Inventario</a>
+        <a class="nav-link" routerLink="/productos" routerLinkActive="active">
+          <i class="bi bi-box-seam me-1"></i>Inventario
+        </a>
       </li>
     </ul>
 
@@ -23,7 +28,7 @@
       @if (menuAbierto()) {
         <div class="dropdown-menu show menu" role="menu" (click)="$event.stopPropagation()">
           <div class="px-3 py-2">
-            <div class="fw-medium">{{ sesion()?.nombre }}</div>
+            <div class="fw-semibold">{{ sesion()?.nombre }}</div>
             <div class="small text-body-secondary">{{ sesion()?.username }} · {{ sesion()?.rol }}</div>
           </div>
           <div class="dropdown-divider"></div>
@@ -36,7 +41,7 @@
   </div>
 </nav>
 
-<main class="container-xl py-4 flex-grow-1">
+<main class="container-xl pt-3 pb-4 flex-grow-1">
   <router-outlet />
 </main>
 

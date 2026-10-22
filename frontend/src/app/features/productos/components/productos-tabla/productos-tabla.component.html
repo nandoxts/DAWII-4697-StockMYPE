@@ -34,8 +34,8 @@
               <div class="fw-medium">{{ p.nombre }}</div>
               @if (p.descripcion) { <div class="small text-body-secondary text-truncate desc">{{ p.descripcion }}</div> }
             </td>
-            <td class="text-body-secondary">{{ p.categoria }}</td>
-            <td class="text-end text-nowrap">{{ p.precio | currency:'PEN':'S/ ':'1.2-2' }}</td>
+            <td><span class="categoria">{{ p.categoria }}</span></td>
+            <td class="text-end text-nowrap fw-semibold">{{ p.precio | currency:'PEN':'S/ ':'1.2-2' }}</td>
             <td class="text-end"><app-stock-badge [stock]="p.stock" /></td>
             <td class="text-end text-nowrap acciones">
               <button class="btn btn-sm accion" title="Editar" [attr.aria-label]="'Editar ' + p.nombre" (click)="editar.emit(p)">

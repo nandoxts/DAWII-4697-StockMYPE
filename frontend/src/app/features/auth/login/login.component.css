@@ -1,8 +1,35 @@
-.pagina-login {
-  min-height: 100vh; display: grid; place-items: center; padding: 24px 16px;
-}
-.contenedor { width: 100%; max-width: 380px; animation: aparecer .3s ease-out; }
+.pagina-login { min-height: 100vh; display: grid; grid-template-columns: 1fr; }
+@media (min-width: 992px) { .pagina-login { grid-template-columns: 1.1fr 1fr; } }
 
-.logo { border-radius: 15px; box-shadow: 0 6px 16px rgba(15, 82, 54, .25); }
+/* ===== Panel de marca ===== */
+.panel-marca {
+  flex-direction: column; justify-content: space-between; padding: 48px 56px; color: #fff;
+  background:
+    radial-gradient(circle at 90% 0%, rgba(52, 211, 153, .5), transparent 45%),
+    radial-gradient(circle at 0% 100%, rgba(245, 158, 11, .25), transparent 40%),
+    var(--degradado);
+}
+.marca { display: flex; align-items: center; gap: .7rem; font-size: 1.35rem; font-weight: 800; }
+.marca img { border-radius: 11px; box-shadow: 0 0 0 2px rgba(255, 255, 255, .35); }
+.lema { font-size: 3.2rem; font-weight: 800; line-height: 1.05; letter-spacing: -.03em; margin-bottom: 1rem; }
+.bajada { max-width: 30rem; font-size: 1.05rem; color: rgba(255, 255, 255, .85); margin-bottom: 2rem; }
+
+.muestras { display: flex; gap: 14px; flex-wrap: wrap; }
+.muestra {
+  display: flex; align-items: center; gap: 12px; padding: 14px 18px; border-radius: 14px;
+  background: rgba(255, 255, 255, .14); border: 1px solid rgba(255, 255, 255, .25);
+  backdrop-filter: blur(4px);
+}
+.muestra .bi { font-size: 1.4rem; }
+.muestra small { display: block; color: rgba(255, 255, 255, .8); font-size: .78rem; font-weight: 600; }
+.muestra strong { font-size: 1.15rem; }
+.muestra.aviso .bi { color: #fcd34d; }
+.pie { color: rgba(255, 255, 255, .7); }
+
+/* ===== Panel del formulario ===== */
+.panel-form { display: grid; place-items: center; padding: 32px 16px; }
+.contenedor { width: 100%; max-width: 400px; animation: aparecer .3s ease-out; }
+.contenedor .card { border: none; }
+.logo { border-radius: 15px; box-shadow: 0 8px 20px rgba(4, 120, 87, .3); }
 
 @keyframes aparecer { from { opacity: 0; transform: translateY(6px); } }

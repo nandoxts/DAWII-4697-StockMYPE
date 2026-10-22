@@ -1,89 +1,123 @@
 /*
  * Tema global de StockMYPE sobre Bootstrap 5.
  * Bootstrap y Bootstrap Icons se cargan desde angular.json (styles).
- * Fuente del sistema (sin descargas): evita el salto de texto al cargar.
+ * Fuente: Plus Jakarta Sans (Google Fonts); si no hay internet usa la del sistema.
  */
 
 :root {
-  --marca: #18794e;
-  --marca-hover: #136240;
-  --marca-suave: #e8f3ee;
-  --fondo-app: #f5f6f8;
+  --marca: #059669;
+  --marca-hover: #047857;
+  --marca-oscura: #064e3b;
+  --marca-suave: #d1fae5;
+  --teal: #0d9488;
+  --ambar: #f59e0b;
+  --ambar-hover: #d97706;
+  --fondo-app: #f4faf7;
+  --degradado: linear-gradient(120deg, #047857 0%, #059669 45%, #0d9488 100%);
 
-  --bs-primary: #18794e;
-  --bs-primary-rgb: 24, 121, 78;
-  --bs-primary-text-emphasis: #0f5236;
-  --bs-primary-bg-subtle: #e8f3ee;
-  --bs-primary-border-subtle: #b7dcc9;
-  --bs-link-color: #18794e;
-  --bs-link-color-rgb: 24, 121, 78;
-  --bs-link-hover-color: #136240;
-  --bs-link-hover-color-rgb: 19, 98, 64;
-  --bs-focus-ring-color: rgba(24, 121, 78, .2);
+  --bs-primary: #059669;
+  --bs-primary-rgb: 5, 150, 105;
+  --bs-primary-text-emphasis: #064e3b;
+  --bs-primary-bg-subtle: #d1fae5;
+  --bs-primary-border-subtle: #a7f3d0;
+  --bs-link-color: #059669;
+  --bs-link-color-rgb: 5, 150, 105;
+  --bs-link-hover-color: #047857;
+  --bs-link-hover-color-rgb: 4, 120, 87;
+  --bs-focus-ring-color: rgba(5, 150, 105, .25);
 
-  --bs-body-font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --bs-body-font-family: 'Plus Jakarta Sans', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
   --bs-body-font-size: .9375rem;
-  --bs-body-color: #1f2328;
-  --bs-secondary-color: #59636e;
-  --bs-border-color: #dfe3e8;
-  --bs-border-radius: .5rem;
-  --bs-border-radius-lg: .625rem;
+  --bs-body-color: #10231b;
+  --bs-secondary-color: #5b6b64;
+  --bs-border-color: #dbe7e1;
+  --bs-border-radius: .625rem;
+  --bs-border-radius-lg: .875rem;
 }
 
 body { background: var(--fondo-app); -webkit-font-smoothing: antialiased; }
 
 /* ===== Botones ===== */
-.btn { font-weight: 500; }
+.btn { font-weight: 600; }
 .btn-primary {
-  --bs-btn-bg: #18794e;
-  --bs-btn-border-color: #18794e;
-  --bs-btn-hover-bg: #136240;
-  --bs-btn-hover-border-color: #136240;
-  --bs-btn-active-bg: #0f5236;
-  --bs-btn-active-border-color: #0f5236;
-  --bs-btn-disabled-bg: #18794e;
-  --bs-btn-disabled-border-color: #18794e;
-  --bs-btn-focus-shadow-rgb: 24, 121, 78;
+  --bs-btn-bg: #059669;
+  --bs-btn-border-color: #059669;
+  --bs-btn-hover-bg: #047857;
+  --bs-btn-hover-border-color: #047857;
+  --bs-btn-active-bg: #064e3b;
+  --bs-btn-active-border-color: #064e3b;
+  --bs-btn-disabled-bg: #059669;
+  --bs-btn-disabled-border-color: #059669;
+  --bs-btn-focus-shadow-rgb: 5, 150, 105;
+}
+/* Acción principal sobre la franja de color */
+.btn-acento {
+  --bs-btn-color: #3b2603;
+  --bs-btn-bg: var(--ambar);
+  --bs-btn-border-color: var(--ambar);
+  --bs-btn-hover-color: #3b2603;
+  --bs-btn-hover-bg: #fbbf24;
+  --bs-btn-hover-border-color: #fbbf24;
+  --bs-btn-active-color: #3b2603;
+  --bs-btn-active-bg: var(--ambar-hover);
+  --bs-btn-active-border-color: var(--ambar-hover);
+  --bs-btn-focus-shadow-rgb: 245, 158, 11;
+  box-shadow: 0 6px 16px rgba(120, 70, 0, .25);
+}
+.btn-vidrio {
+  --bs-btn-color: #fff;
+  --bs-btn-bg: rgba(255, 255, 255, .14);
+  --bs-btn-border-color: rgba(255, 255, 255, .28);
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: rgba(255, 255, 255, .24);
+  --bs-btn-hover-border-color: rgba(255, 255, 255, .4);
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-bg: rgba(255, 255, 255, .3);
+  --bs-btn-disabled-color: #fff;
+  --bs-btn-disabled-bg: rgba(255, 255, 255, .1);
+  --bs-btn-disabled-border-color: rgba(255, 255, 255, .2);
 }
 .btn-outline-secondary {
-  --bs-btn-color: #424a53;
-  --bs-btn-border-color: #d0d7de;
-  --bs-btn-hover-color: #1f2328;
-  --bs-btn-hover-bg: #f3f4f6;
-  --bs-btn-hover-border-color: #c4cbd3;
-  --bs-btn-active-color: #1f2328;
-  --bs-btn-active-bg: #eaecef;
-  --bs-btn-active-border-color: #c4cbd3;
+  --bs-btn-color: #35473f;
+  --bs-btn-border-color: #cfded7;
+  --bs-btn-hover-color: #10231b;
+  --bs-btn-hover-bg: #ecf7f2;
+  --bs-btn-hover-border-color: #b5d3c5;
+  --bs-btn-active-color: #10231b;
+  --bs-btn-active-bg: #dff1e8;
+  --bs-btn-active-border-color: #b5d3c5;
 }
 
 .pagination {
-  --bs-pagination-color: #424a53;
-  --bs-pagination-active-bg: #18794e;
-  --bs-pagination-active-border-color: #18794e;
-  --bs-pagination-focus-box-shadow: 0 0 0 .2rem rgba(24, 121, 78, .2);
+  --bs-pagination-color: #35473f;
+  --bs-pagination-border-radius: .5rem;
+  --bs-pagination-active-bg: #059669;
+  --bs-pagination-active-border-color: #059669;
+  --bs-pagination-focus-box-shadow: 0 0 0 .2rem rgba(5, 150, 105, .25);
 }
 
 /* ===== Formularios ===== */
+.form-control, .form-select { border-color: #d3e3db; }
 .form-control:focus, .form-select:focus {
-  border-color: #86c2a5;
-  box-shadow: 0 0 0 .2rem rgba(24, 121, 78, .15);
+  border-color: #34d399;
+  box-shadow: 0 0 0 .2rem rgba(5, 150, 105, .18);
 }
-.form-label { font-weight: 500; font-size: .875rem; margin-bottom: .35rem; }
-.input-group-text { color: var(--bs-secondary-color); background: #f6f8fa; }
+.form-label { font-weight: 600; font-size: .85rem; margin-bottom: .35rem; }
+.input-group-text { color: var(--marca); background: #ecf7f2; border-color: #d3e3db; }
 
-/* ===== Tarjetas: borde fino, sin sombras llamativas ===== */
+/* ===== Tarjetas ===== */
 .card {
-  --bs-card-border-color: #e3e6ea;
-  --bs-card-border-radius: .625rem;
-  box-shadow: 0 1px 2px rgba(16, 24, 40, .04);
+  --bs-card-border-color: #e1ece6;
+  --bs-card-border-radius: .875rem;
+  box-shadow: 0 1px 2px rgba(6, 78, 59, .04), 0 8px 24px rgba(6, 78, 59, .06);
   overflow: hidden;
 }
-.card-header, .card-footer { border-color: #eceef1; }
+.card-header, .card-footer { border-color: #e8f1ec; }
 
 /* ===== Esqueletos de carga ===== */
 .esqueleto {
   display: block; height: .85rem; border-radius: 4px;
-  background: linear-gradient(90deg, #eceef1 25%, #f5f6f8 37%, #eceef1 63%);
+  background: linear-gradient(90deg, #e3eee8 25%, #f1f8f4 37%, #e3eee8 63%);
   background-size: 400% 100%;
   animation: esqueleto 1.3s ease infinite;
 }
@@ -100,5 +134,6 @@ body { background: var(--fondo-app); -webkit-font-smoothing: antialiased; }
 }
 
 /* ===== SweetAlert2 con la tipografía de la app ===== */
-.swal2-popup { font-family: var(--bs-body-font-family); border-radius: .75rem; }
+.swal2-popup { font-family: var(--bs-body-font-family); border-radius: 1rem; }
 .swal2-title { font-size: 1.25rem; }
+.swal2-timer-progress-bar { background: var(--marca); }

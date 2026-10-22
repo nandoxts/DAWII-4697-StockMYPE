@@ -13,16 +13,16 @@ import { StatCardComponent } from '../../../../shared/components/stat-card/stat-
   template: `
     <div class="row g-3">
       <div class="col-6 col-lg-3">
-        <app-stat-card icono="bi-box-seam" etiqueta="Productos" [valor]="resumen().total" [cargando]="cargando()" />
+        <app-stat-card icono="bi-box-seam" tono="verde" etiqueta="Productos" [valor]="resumen().total" [cargando]="cargando()" />
       </div>
       <div class="col-6 col-lg-3">
-        <app-stat-card icono="bi-stack" etiqueta="Unidades en stock" [valor]="resumen().unidades" [cargando]="cargando()" />
+        <app-stat-card icono="bi-stack" tono="teal" etiqueta="Unidades en stock" [valor]="resumen().unidades" [cargando]="cargando()" />
       </div>
       <div class="col-6 col-lg-3">
-        <app-stat-card icono="bi-cash-coin" etiqueta="Valor del inventario" [valor]="resumen().valor" [cargando]="cargando()" />
+        <app-stat-card icono="bi-cash-coin" tono="azul" etiqueta="Valor del inventario" [valor]="resumen().valor" [cargando]="cargando()" />
       </div>
       <div class="col-6 col-lg-3">
-        <app-stat-card icono="bi-exclamation-triangle" [etiqueta]="'Stock bajo (≤ ' + stockMinimo + ')'"
+        <app-stat-card icono="bi-exclamation-triangle" tono="ambar" [etiqueta]="'Stock bajo (≤ ' + stockMinimo + ')'"
                        [variante]="resumen().bajos > 0 ? 'alerta' : 'normal'" [valor]="resumen().bajos" [cargando]="cargando()" />
       </div>
     </div>

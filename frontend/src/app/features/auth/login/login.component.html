@@ -1,8 +1,26 @@
 <main class="pagina-login">
+  <!-- Panel de marca: solo en pantallas anchas -->
+  <section class="panel-marca d-none d-lg-flex" aria-hidden="true">
+    <div class="marca">
+      <img src="logo.svg" alt="" width="44" height="44">
+      <span>StockMYPE</span>
+    </div>
+    <div>
+      <h2 class="lema">Tu bodega,<br>bajo control.</h2>
+      <p class="bajada">Registra tus productos, mira cuánto vale tu mercadería y entérate a tiempo de lo que se está acabando.</p>
+      <div class="muestras">
+        <div class="muestra"><i class="bi bi-cash-coin"></i><div><small>Valor del inventario</small><strong>S/ 5,456.50</strong></div></div>
+        <div class="muestra aviso"><i class="bi bi-exclamation-triangle"></i><div><small>Por reponer</small><strong>9 productos</strong></div></div>
+      </div>
+    </div>
+    <small class="pie">DAW II (4697) · Cibertec</small>
+  </section>
+
+  <section class="panel-form">
   <div class="contenedor">
-    <div class="text-center mb-4">
-      <img class="logo d-block mx-auto mb-3" src="logo.svg" alt="StockMYPE" width="64" height="64">
-      <h1 class="h4 fw-bold mb-1">Stock<span class="text-primary">MYPE</span></h1>
+    <div class="mb-4">
+      <img class="logo d-lg-none mb-3" src="logo.svg" alt="StockMYPE" width="56" height="56">
+      <h1 class="h3 fw-bold mb-1">Bienvenido</h1>
       <p class="text-body-secondary mb-0">Ingresa para gestionar tu inventario</p>
     </div>
 
@@ -45,6 +63,7 @@
       </div>
     </form>
 
-    <p class="text-center text-body-secondary small mt-4 mb-0">DAW II (4697) · Cibertec</p>
+    <p class="text-center text-body-secondary small mt-4 mb-0 d-lg-none">DAW II (4697) · Cibertec</p>
   </div>
+  </section>
 </main>

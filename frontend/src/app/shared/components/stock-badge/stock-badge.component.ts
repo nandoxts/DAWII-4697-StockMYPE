@@ -8,15 +8,20 @@ import { STOCK_MINIMO } from '../../../core/models/producto.model';
   standalone: true,
   template: `
     @switch (estado()) {
-      @case ('agotado') { <span class="etiqueta agotado">Agotado</span> }
-      @case ('bajo') { <span class="etiqueta bajo">{{ stock() }} · bajo</span> }
-      @default { <span>{{ stock() }}</span> }
+      @case ('agotado') { <span class="etiqueta agotado"><span class="punto"></span>Agotado</span> }
+      @case ('bajo') { <span class="etiqueta bajo"><span class="punto"></span>{{ stock() }} · bajo</span> }
+      @default { <span class="normal">{{ stock() }}</span> }
     }
   `,
   styles: [`
-    .etiqueta { display: inline-block; padding: .15rem .5rem; border-radius: 4px; font-size: .8rem; font-weight: 500; white-space: nowrap; }
-    .bajo { background: #fef3c7; color: #92400e; }
-    .agotado { background: #fde8e7; color: #b42318; }
+    .etiqueta {
+      display: inline-flex; align-items: center; gap: .35rem; padding: .2rem .6rem; border-radius: 999px;
+      font-size: .8rem; font-weight: 700; white-space: nowrap;
+    }
+    .punto { width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+    .bajo { background: #fef3c7; color: #b45309; }
+    .agotado { background: #fee2e2; color: #dc2626; }
+    .normal { font-weight: 600; }
   `]
 })
 export class StockBadgeComponent {

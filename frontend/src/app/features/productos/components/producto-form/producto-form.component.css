@@ -1,6 +1,11 @@
 .modal { animation: aparecer .15s ease; }
 .modal-dialog { animation: subir .2s ease; }
 .form-label { font-weight: 600; font-size: 13px; }
+.modal { background: rgba(6, 78, 59, .35); backdrop-filter: blur(2px); }
+.modal-content { border-radius: 1rem; overflow: hidden; }
+.modal-header { background: var(--degradado); color: #fff; border: none; }
+.modal-header .bi { color: #fff !important; }
+.modal-header .btn-close { filter: invert(1) grayscale(1) brightness(2); }
 
 @keyframes aparecer { from { opacity: 0; } }
 @keyframes subir { from { opacity: 0; transform: translateY(16px); } }

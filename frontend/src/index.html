@@ -5,23 +5,20 @@
   <title>StockMYPE</title>
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#18794e">
+  <meta name="theme-color" content="#047857">
   <link rel="icon" type="image/svg+xml" href="logo.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
   <style>
     /* Pantalla de arranque: se ve mientras Angular carga, así no hay pantallazo en blanco */
-    body { margin: 0; background: #f5f6f8; }
-    .arranque {
-      position: fixed; inset: 0; display: grid; place-items: center;
-      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif; color: #59636e;
-    }
-    .arranque-caja { display: flex; flex-direction: column; align-items: center; gap: 14px; font-size: 14px; }
-    .arranque-logo {
-      width: 44px; height: 44px; border-radius: 10px; background: #18794e; color: #fff;
-      display: grid; place-items: center; font-weight: 700; font-size: 20px;
-    }
-    .arranque-barra { width: 120px; height: 3px; border-radius: 3px; background: #e2e5e9; overflow: hidden; }
+    body { margin: 0; background: #f4faf7; }
+    .arranque { position: fixed; inset: 0; display: grid; place-items: center; }
+    .arranque-caja { display: flex; flex-direction: column; align-items: center; gap: 16px; }
+    .arranque-logo { width: 56px; height: 56px; border-radius: 14px; box-shadow: 0 8px 20px rgba(4, 120, 87, .3); }
+    .arranque-barra { width: 120px; height: 3px; border-radius: 3px; background: #d1fae5; overflow: hidden; }
     .arranque-barra::after {
-      content: ''; display: block; width: 40%; height: 100%; background: #18794e; border-radius: 3px;
+      content: ''; display: block; width: 40%; height: 100%; background: #059669; border-radius: 3px;
       animation: arranque 1s ease-in-out infinite;
     }
     @keyframes arranque { from { transform: translateX(-100%); } to { transform: translateX(250%); } }
@@ -31,7 +28,7 @@
   <app-root>
     <div class="arranque">
       <div class="arranque-caja">
-        <div class="arranque-logo">S</div>
+        <img class="arranque-logo" src="logo.svg" alt="StockMYPE">
         <div class="arranque-barra"></div>
       </div>
     </div>

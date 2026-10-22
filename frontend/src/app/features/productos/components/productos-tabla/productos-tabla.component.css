@@ -1,21 +1,29 @@
 th {
-  font-size: .78rem; color: var(--bs-secondary-color); font-weight: 500; white-space: nowrap;
-  background: #f9fafb; border-bottom-color: #e3e6ea;
+  font-size: .8rem; color: #35574a; font-weight: 700; white-space: nowrap;
+  background: #f1f9f5; border-bottom-color: #dcebe3; padding-top: .7rem; padding-bottom: .7rem;
 }
 .ordenable { cursor: pointer; user-select: none; }
-.ordenable:hover { color: #1f2328; }
-td { border-color: #eef0f2; }
-td:first-child, th:first-child { padding-left: 1rem; }
-td:last-child, th:last-child { padding-right: 1rem; }
+.ordenable:hover { color: var(--marca); }
+td { border-color: #edf4f0; padding-top: .75rem; padding-bottom: .75rem; }
+td:first-child, th:first-child { padding-left: 1.25rem; }
+td:last-child, th:last-child { padding-right: 1.25rem; }
+.table-hover > tbody > tr:hover > * { --bs-table-bg-state: #f3fbf7; }
 
-.codigo { font-family: ui-monospace, 'Cascadia Mono', Consolas, monospace; font-size: .82rem; color: var(--bs-secondary-color); }
+.codigo {
+  display: inline-block; padding: .15rem .5rem; border-radius: 6px; background: #ecf7f2;
+  font-family: ui-monospace, 'Cascadia Mono', Consolas, monospace; font-size: .8rem; font-weight: 600; color: #047857;
+}
+.categoria {
+  display: inline-block; padding: .15rem .55rem; border-radius: 999px; border: 1px solid #dcebe3;
+  font-size: .8rem; font-weight: 600; color: #35574a;
+}
 .desc { max-width: 320px; }
 
 /* Acciones discretas: se notan al pasar sobre la fila */
-.accion { color: #6b7480; border: none; padding: .25rem .45rem; }
-.accion:hover { color: #1f2328; background: #eef0f2; }
-.accion-peligro:hover { color: #b42318; background: #fdecea; }
+.accion { color: #5b6b64; border: none; padding: .3rem .5rem; border-radius: 8px; }
+.accion:hover { color: var(--marca); background: #dff5ea; }
+.accion-peligro:hover { color: #dc2626; background: #fee2e2; }
 @media (hover: hover) {
-  .acciones .accion { opacity: .55; transition: opacity .15s; }
+  .acciones .accion { opacity: .6; transition: opacity .15s; }
   tr:hover .acciones .accion, .accion:focus-visible { opacity: 1; }
 }

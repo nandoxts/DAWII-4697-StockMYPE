@@ -1,25 +1,41 @@
-:host { display: flex; flex-direction: column; min-height: 100vh; }
+:host { display: flex; flex-direction: column; min-height: 100vh; position: relative; }
 
-.navbar { padding-top: .6rem; padding-bottom: .6rem; }
+/* Franja de color: la identidad de la app. Todo lo demás queda blanco y tranquilo. */
+.franja {
+  position: absolute; inset: 0 0 auto 0; height: 235px; z-index: 0;
+  background:
+    radial-gradient(circle at 85% -20%, rgba(52, 211, 153, .45), transparent 45%),
+    radial-gradient(circle at 10% 120%, rgba(245, 158, 11, .18), transparent 40%),
+    var(--degradado);
+}
+.navbar, main, footer { position: relative; z-index: 1; }
 
-.nav-link { font-weight: 500; color: #424a53; border-radius: 6px; padding: 6px 12px !important; }
-.nav-link:hover { background: #f3f4f6; }
-.nav-link.active { color: var(--marca) !important; background: var(--marca-suave); }
+.navbar { padding-top: .9rem; padding-bottom: .9rem; }
+.marca {
+  display: flex; align-items: center; gap: .6rem; color: #fff; font-weight: 800; font-size: 1.2rem;
+  letter-spacing: -.01em;
+}
+.marca:hover { color: #fff; }
+.marca img { border-radius: 9px; box-shadow: 0 0 0 2px rgba(255, 255, 255, .35); }
+
+.nav-link { font-weight: 600; color: rgba(255, 255, 255, .78) !important; border-radius: 8px; padding: 6px 12px !important; }
+.nav-link:hover { color: #fff !important; background: rgba(255, 255, 255, .12); }
+.nav-link.active { color: #fff !important; background: rgba(255, 255, 255, .18); }
 
 .menu-usuario { position: relative; }
 .usuario {
-  display: flex; align-items: center; gap: 8px; padding: 4px 8px; border-radius: 8px;
-  color: #1f2328; text-decoration: none; font-weight: 500;
+  display: flex; align-items: center; gap: 8px; padding: 4px 10px 4px 4px; border-radius: 999px;
+  color: #fff; text-decoration: none; font-weight: 600;
 }
-.usuario:hover, .usuario[aria-expanded="true"] { background: #f3f4f6; color: #1f2328; }
+.usuario:hover, .usuario[aria-expanded="true"] { background: rgba(255, 255, 255, .14); color: #fff; }
 .avatar {
-  width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center;
-  background: #e7e9ec; color: #424a53; font-weight: 600; font-size: 13px;
+  width: 32px; height: 32px; border-radius: 50%; display: grid; place-items: center;
+  background: var(--ambar); color: #3b2603; font-weight: 800; font-size: 14px;
 }
 
 .menu {
-  position: absolute; right: 0; top: calc(100% + 6px); min-width: 220px;
-  border-color: #e3e6ea; box-shadow: 0 8px 24px rgba(16, 24, 40, .1);
+  position: absolute; right: 0; top: calc(100% + 8px); min-width: 230px;
+  border-color: #e1ece6; border-radius: .75rem; box-shadow: 0 12px 32px rgba(6, 78, 59, .16);
   animation: desplegar .12s ease-out; transform-origin: top right;
 }
 @keyframes desplegar { from { opacity: 0; transform: scale(.97) translateY(-4px); } }
