@@ -29,7 +29,7 @@ POST http://localhost:8080/api/productos
 Authorization: Basic admin admin123
 Content-Type: application/json
 
-{ "codigo": "ABR-010", "nombre": "Fideos tallarin 500 g", "descripcion": "Paquete", "categoria": "Abarrotes", "precio": 3.80, "stock": 20 }
+{ "codigo": "ABR-016", "nombre": "Quinua 500 g", "descripcion": "Bolsa de quinua", "categoria": "Abarrotes", "precio": 3.80, "stock": 20 }
 
 ### Actualizar (200)
 PUT http://localhost:8080/api/productos/1
